@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #01011f;
+            color: #e8be15;
+        }
+
+        .projects-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-top {
+            display: flex;
+            justify-content: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .page-top a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: rgba(232, 190, 21, 0.12);
+            color: #e8be15;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .page-top a:hover {
+            background: rgba(232, 190, 21, 0.22);
+            color: #fff;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 12px;
+            font-size: 42px;
+            letter-spacing: 0.05em;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #c9b44b;
+            font-size: 18px;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+        }
+
+        .filter-group label {
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #d1b72f;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            border: 1px solid #4a4f6a;
+            border-radius: 6px;
+            padding: 10px 12px;
+            background-color: #09102f;
+            color: #e8be15;
+            font-size: 16px;
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .year-header {
+            grid-column: 1 / -1;
+            margin: 0;
+            padding: 16px 20px;
+            background: rgba(232, 190, 21, 0.08);
+            border-left: 4px solid #e8be15;
+            color: #e8be15;
+            font-size: 28px;
+            letter-spacing: 0.06em;
+        }
+
+        .project-card {
+            border: 1px solid #3a3f5a;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #e8be15;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: #c3b05a;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(232, 190, 21, 0.16);
+            color: #fff;
+        }
+
+        .status-badge.completed {
+            background: rgba(34, 139, 34, 0.18);
+            color: #b8e29d;
+        }
+
+        .status-badge.in-progress {
+            background: rgba(255, 165, 0, 0.18);
+            color: #ffd67a;
+        }
+
+        .project-description {
+            margin: 0;
+            color: #d5c26f;
+            line-height: 1.75;
+            flex: 1;
+        }
+
+        .project-card a {
+            align-self: start;
+            text-decoration: none;
+            color: #ffe16a;
+            font-weight: 600;
+        }
+
+        .project-card a:hover {
+            color: #fff;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            padding: 40px 20px;
+            text-align: center;
+            color: #b5ab6d;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #5e625e;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="projects-wrapper">
+        <div class="page-top">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <header class="page-header">
+            <h1>Projects</h1>
+            <p>Filter projects by discipline, year, amount, or status. Projects are grouped by year and shown newest first.</p>
+        </header>
+
+        <section class="filter-bar">
+            <div class="filter-group">
+                <label for="disciplineFilter">Discipline</label>
+                <select id="disciplineFilter"></select>
+            </div>
+            <div class="filter-group">
+                <label for="yearFilter">Year</label>
+                <select id="yearFilter"></select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter">Status</label>
+                <select id="statusFilter"></select>
+            </div>
+            <div class="filter-group">
+                <label for="amountFilter">Amount</label>
+                <select id="amountFilter"></select>
+            </div>
+            <div class="filter-group">
+                <label for="searchInput">Search</label>
+                <input id="searchInput" type="search" placeholder="Title or description" />
+            </div>
+        </section>
+
+        <section id="projectList" class="project-list"></section>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: 'Curatorial Project "Función de Traslado"',
+                description: 'Co-corator for project around the topic of community and ecological displacement in Río Piedras, Puerto Rico.',
+                year: 2026,
+                discipline: 'Art',
+                status: 'In progress',
+                amount: 10000,
+                url: '#'
+            },
+            {
+                title: 'Los Olmos Workers Co-op "CoopOlmo"',
+                description: 'Co-founder of a worker-owned cooperative for artistic and cultural initiatives in San Juan, Puerto Rico.',
+                year: 2026,
+                discipline: 'Art',
+                status: 'In progress',
+                amount: 0,
+                url: '#'
+            },
+            {
+                title: 'Reconceptualizing Madness in the Decolonial Struggle',
+                description: 'Research project investigating the philosophical writing of Frantz Fanon and Simone de Beauvoir on a "child-like" mentality in oppressed subjects and how this might relate to the process of decolonization.',
+                year: 2025,
+                discipline: 'Humanities',
+                status: 'In progress',
+                amount: 0,
+                url: '#'
+            },
+            {
+                title: 'Molecular and Neural Effects of Ketamine in the Brain',
+                description: 'Research project investigating effects of ketamine on protein synthesis and neural oscillations in the hippocampus, to better understand its therapeutic potential.',
+                year: 2025,
+                discipline: 'Science',
+                status: 'Completed',
+                amount: 35605,
+                url: '#'
+            },
+            {
+                title: 'The Impact of Artificial Inteligence on our Concepts of Objectivity and the Politics of Opacity',
+                description: 'Research project investigating the implications of the opacity implicit in the internal structure of Deep Neural Networks on how we conceive objectivity and the other, using Thomas Kuhn, Lorraine Daston, Peter Gallison and Eduard Glissant as primary references.',
+                year: 2023,
+                discipline: 'Humanities',
+                status: 'In progress',
+                amount: 0,
+                url: '#'
+            },
+            {
+                title: 'Genetic Variation in the Human Brain and its Role in Schizophrenia',
+                description: 'Research project investigating how genetic variation of the CACNA1C gene in the human brain could influence alternative splicing and contribution to schizophrenia, using human induced pluripotent stem cells from schizophrenia patients.',
+                year: 2023,
+                discipline: 'Science',
+                status: 'Completed',
+                amount: 7200,
+                url: '#'
+            },
+            {
+                title: 'Genetically Identifying Neurons Involved in Olfactory Associative Learning in the Piriform Cortex',
+                description: 'Research project investigating the genetic subtype of neurons involved in olfactory associative learning, using RNA squencing and whole-brain clearing histology.',
+                year: 2022,
+                discipline: 'Science',
+                status: 'Completed',
+                amount: 5000,
+                url: '#'
+            },
+            {
+                title: 'Madness in the Caribbean and its Political Implications',
+                description: 'Research project investigating depictions of madness in the literary work of Rita Indiana and Francisco Matos Paoli, using Hannah Arendt, Sylvia Wynter and the psychiatric record of Matos Paoli to frame its political implications.',
+                year: 2022,
+                discipline: 'Humanities',
+                status: 'Completed',
+                amount: 4000,
+                url: '#'
+            },
+            {
+                title: 'A Critical Revision of the Philosophy and STEM Curricula at Brown University',
+                description: 'Worked on revising the critical engagement of the philosophy and STEM course offerings with Decolonization@Brown student organization and the Deputy Dean for the Curriculum as a student representative at the College Curriculum Council.',
+                year: 2020,
+                discipline: 'Humanities/Science',
+                status: 'Completed',
+                amount: 0,
+                url: '#'
+            },
+            {
+                title: 'Black Student Activism and Curricular Reform at Brown University',
+                description: 'Archival research project investigating the history of Black student activism at Brown during the 60s and 70s, and its relationship to parallel initiatives going on around curricular reform, produced both a research paper and curricular reform proposal in collaboration with Kanha Prasad.',
+                year: 2020,
+                discipline: 'Humanities',
+                status: 'Completed',
+                amount: 5000,
+                url: '#'
+            },
+            {
+                title: 'Sustainable Micro-architecture and Artist Residency in Greece',
+                description: 'Organized a summer architecture course from the University of Puerto Rico to travel across Greece and study sustainable architecture, ivited Puerto Rican muscicians for a short residency in the final project space.',
+                year: 2019,
+                discipline: 'Art',
+                status: 'Completed',
+                amount: 3000,
+                url: '#'
+            },
+            {
+                title: 'SITIO Short-term Residencies and Community Gatherings',
+                description: 'Organized short-term residencies and exhibitions with community dinners based in Rio Piedras, Puerto Rico',
+                year: 2019,
+                discipline: 'Art',
+                status: 'In progress',
+                amount: 1000,
+                url: '#'
+            },
+            {
+                title: 'Graphical Artwork on the Distortion of Subjectivity through Modern Technology',
+                description: 'Exhibited original mixed media work concerning a dialogue between films "Stalker" and "Koyaanisqatsi" at the New Art Biennale "Art Future/ Future Signs" at the Art Academy of Latvia and at the List Art Center of Brown University under the title "Remorse Returns." ',
+                year: 2019,
+                discipline: 'Art',
+                status: 'Completed',
+                amount: 500,
+                url: '#'
+            },
+             {
+                title: 'Discover: A Conversation Between Science and Art (FKA RISD STEAM)',
+                description: 'Participated and eventually co-led interdisciplinary student group between the Rhode Island School of Design (RISD) and Brown University that organized a yearly exhibition/conference, and regular student-led conversation sessions fostering the collaboration between artists and scientists.',
+                year: 2018,
+                discipline: 'Art/Science',
+                status: 'Completed',
+                amount: 5000,
+                url: '#'
+            },
+            {
+                title: 'Neural Network for Quark Decay Prediction',
+                description: 'Explored the use of deep neural networks to predict bottom quark decay events in Large Hadron Collider CMS experiment data from the European Center for Nuclear Research (CERN).',
+                year: 2018,
+                discipline: 'Science',
+                status: 'Completed',
+                amount: 5000,
+                url: '#'
+            }
+        ];
+
+        const amountRanges = [
+            { label: 'All amounts', min: 0, max: Infinity },
+            { label: 'Under $1k', min: 0, max: 1000 },
+            { label: '$1k – $10k', min: 1000, max: 10000 },
+            { label: '$10k – $50k', min: 10000, max: 50000 },
+            { label: 'Over $50k', min: 50000, max: Infinity }
+        ];
+
+        const disciplineFilter = document.getElementById('disciplineFilter');
+        const yearFilter = document.getElementById('yearFilter');
+        const statusFilter = document.getElementById('statusFilter');
+        const amountFilter = document.getElementById('amountFilter');
+        const searchInput = document.getElementById('searchInput');
+        const projectList = document.getElementById('projectList');
+
+        function formatAmount(amount) {
+            if (amount >= 1000000) {
+                return '$' + (amount / 1000000).toFixed(1) + 'M';
+            }
+            if (amount >= 1000) {
+                return '$' + (amount / 1000).toFixed(0) + 'k';
+            }
+            return '$' + amount;
+        }
+
+        function uniqueValues(field) {
+            return Array.from(new Set(projects.map(project => project[field])));
+        }
+
+        function populateSelect(select, values, includeAll = true) {
+            select.innerHTML = '';
+            if (includeAll) {
+                const option = document.createElement('option');
+                option.value = 'all';
+                option.textContent = 'All';
+                select.append(option);
+            }
+            values.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                select.append(option);
+            });
+        }
+
+        function buildFilters() {
+            const disciplines = uniqueValues('discipline').sort();
+            const years = uniqueValues('year').sort((a, b) => b - a);
+            const statuses = uniqueValues('status').sort();
+
+            populateSelect(disciplineFilter, disciplines);
+            populateSelect(yearFilter, years);
+            populateSelect(statusFilter, statuses);
+
+            amountRanges.forEach(range => {
+                const option = document.createElement('option');
+                option.value = range.label;
+                option.textContent = range.label;
+                amountFilter.append(option);
+            });
+        }
+
+        function filterProjects() {
+            const discipline = disciplineFilter.value;
+            const year = yearFilter.value;
+            const status = statusFilter.value;
+            const amountLabel = amountFilter.value;
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const amountRange = amountRanges.find(range => range.label === amountLabel) || amountRanges[0];
+
+            return projects
+                .filter(project => {
+                    const matchesDiscipline = discipline === 'all' || project.discipline === discipline;
+                    const matchesYear = year === 'all' || String(project.year) === year;
+                    const matchesStatus = status === 'all' || project.status === status;
+                    const matchesAmount = project.amount >= amountRange.min && project.amount < amountRange.max;
+                    const searchableText = `${project.title} ${project.description}`.toLowerCase();
+                    const matchesSearch = !searchTerm || searchableText.includes(searchTerm);
+                    return matchesDiscipline && matchesYear && matchesStatus && matchesAmount && matchesSearch;
+                })
+                .sort((a, b) => {
+                    if (b.year !== a.year) return b.year - a.year;
+                    return a.title.localeCompare(b.title);
+                });
+        }
+
+        function renderProjects(list) {
+            projectList.innerHTML = '';
+            if (!list.length) {
+                projectList.innerHTML = '<div class="empty-state">No projects match these filters. Try broadening your search.</div>';
+                return;
+            }
+
+            let currentYear = null;
+            list.forEach(project => {
+                if (project.year !== currentYear) {
+                    currentYear = project.year;
+                    const yearHeading = document.createElement('h2');
+                    yearHeading.textContent = currentYear;
+                    yearHeading.className = 'year-header';
+                    projectList.append(yearHeading);
+                }
+
+                const card = document.createElement('article');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <div class="project-meta">
+                        <span>${project.discipline}</span>
+                        <span class="status-badge ${project.status.toLowerCase().replace(/\s+/g, '-')}">${project.status}</span>
+                        <span>${formatAmount(project.amount)}</span>
+                    </div>
+                    <p class="project-description">${project.description}</p>
+                    <a href="${project.url}">View Project</a>
+                `;
+                projectList.append(card);
+            });
+        }
+
+        function updateProjectList() {
+            renderProjects(filterProjects());
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            buildFilters();
+            updateProjectList();
+            disciplineFilter.addEventListener('change', updateProjectList);
+            yearFilter.addEventListener('change', updateProjectList);
+            statusFilter.addEventListener('change', updateProjectList);
+            amountFilter.addEventListener('change', updateProjectList);
+            searchInput.addEventListener('input', updateProjectList);
+        });
+    </script>
+</body>
+</html>

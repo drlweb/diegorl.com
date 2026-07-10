@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact_DRL</title>
+    <style>
+
+        @font-face {
+            font-family: "quest";
+            src: url("fonts/quest.otf") format("opentype");
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #01011f;
+            color: #e8be15;
+        }
+        .contact-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .contact-text {
+            flex: 1 1 460px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .contact-text h1 {
+            margin: 0 0 24px;
+            font-size: 52px;
+            color: #e8be15;
+            text-align: left;
+        }
+        .contact-text p {
+            margin: 0 0 32px;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #b9a63d;
+            text-align: justify;
+        }
+        .contact-text a {
+            margin: 0 0 32px;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #B59410;
+            text-align: justify;
+        }
+        .contact-text a:hover {
+            background-color: rgba(233, 206, 59, 0.12);
+            color:  #c5ccd7;
+        }
+        .contact-form {
+            flex: 1 1 420px;
+            min-height: 520px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #1a263f 0%, #0f1740 45%, #2c3e78 100%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 40px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            margin-bottom: 20px;
+            padding: 12px;
+            font-size: 25px;
+            border: 1px solid rgba(181, 148, 16, 0.35);
+            border-radius: 5px;
+            background-color: #01011f;
+            color: #e8be15;
+            text-align: center;
+            font-family: "quest", sans-serif;
+        }
+        .contact-form button {
+            padding: 12px;
+            font-size: 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b59410;
+            color: #01011f;
+            cursor: pointer;
+            font-family: "quest", sans-serif;
+        }
+        .contact-form button:hover {
+            background-color: rgba(233, 206, 59, 0.12);
+            color: #c5ccd7;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+         .nav-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: #b59410;
+            font-size: 20px;
+            padding: 12px 18px;
+            border: 1px solid rgba(181, 148, 16, 0.35);
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .nav-links a:hover {
+            background-color: rgba(233, 206, 59, 0.12);
+            color:  #c5ccd7;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-wrapper">
+        <div class="contact-text">
+            <h1>Contact Me</h1>
+            <p>If you would like to get in touch with me, please fill out the form on the right or reach out via email at <a href="mailto:drl.18@proton.me">drl.18@proton.me</a> or instagram at <a href="https://www.instagram.com/dsincero/" target="_blank" rel="noopener noreferrer">@dsincero</a>.</p>
+            <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/xojozvgr" method="POST" data-endpoint="https://formspree.io/f/xojozvgr">
+                <input name="name" type="text" placeholder="Your Name" required>
+                <input name="email" type="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+                <div id="form-status" role="status" aria-live="polite" style="margin-top:12px;color:#cfe3ff"></div>
+            </form>
+        </div>
+    </div>
+</body>
+    <script>
+        (function(){
+            const form = document.getElementById('contact-form');
+            const status = document.getElementById('form-status');
+
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const endpoint = form.dataset.endpoint || form.action;
+
+                if (!endpoint || endpoint.includes('yourFormId')) {
+                    status.textContent = 'Please replace the form endpoint with your Formspree form URL (see comment in HTML).';
+                    status.style.color = '#f7c6c6';
+                    return;
+                }
+
+                const data = new FormData(form);
+                status.textContent = 'Sending...';
+                status.style.color = '#cfe3ff';
+                form.querySelector('button[type="submit"]').disabled = true;
+
+                try {
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: data
+                    });
+
+                    if (res.ok) {
+                        status.textContent = 'Message sent — thank you!';
+                        status.style.color = '#b6f3c1';
+                        form.reset();
+                    } else {
+                        const json = await res.json().catch(()=>null);
+                        status.textContent = (json && json.error) ? json.error : 'Failed to send message. Please try again later.';
+                        status.style.color = '#f7c6c6';
+                    }
+                } catch (err) {
+                    status.textContent = 'Network error. Please check your connection.';
+                    status.style.color = '#f7c6c6';
+                } finally {
+                    form.querySelector('button[type="submit"]').disabled = false;
+                }
+            });
+        })();
+    </script>
+</html>
