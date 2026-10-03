@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about_DRL</title>
+    <title>project_ketamine</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,15 +24,35 @@
         .photo-box {
             flex: 1 1 420px;
             min-height: 520px;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #1a263f 0%, #0f1740 45%, #2c3e78 100%);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
         .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-column {
+            flex: 1 1 420px;
+            min-width: 0;
+        }
+        .photo-caption {
+            margin-top: 12px;
+            color: #b9a63d;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .photo-caption p {
+            margin: 0 0 8px;
+        }
+        .photo-caption p:last-child {
+            margin-bottom: 0;
+        }
+        .photo-box textPath {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -94,13 +114,21 @@
 </head>
 <body>
     <div class="about-wrapper">
-        <div class="photo-box">
-            <img src="biopic.jpg" alt="Diego Rodríguez Langevin">
+        <div class="photo-column">
+            <div class="photo-box">
+                <img src="ketamine.png" alt="Ketamine">
+            </div>
+            <div class="photo-caption">
+                <p>Figure excerpt from master's thesis showing quantification of normalized FUNCAT signal in whole hippocampus.</p>
+                <p>Mean pixel intensity was measured from images of hippocampal samples taken using a confocal microscope at 20x to estimate average FUNCAT signal relative to saline control. A significant increase in FUNCAT signal was found in the ketamine treated animals compared to saline controls.</p>
+            </div>
         </div>
         <div class="about-text">
-            <h1>About Me</h1>
-            <p>Hi, I’m Diego Rodríguez Langevin, an interdisciplinary researcher with a love for designing, managing and communicating complex projects in both art and science. My academic focus is two-pronged. On the one hand I specialize in molecular neuroscience, and have experience in both experimental and computational work. On the other hand I study philosophy with an emphasis on 20th century thinkers and decolonial theory. Creatively I dabble in poetry and graphic design, where I have developed a style based on free association and the juxtaposition of images. My goal is to combine my eclectic set of skills to help develop and realize interdisciplinary projects across academic, civic and creative communities alike. Please feel free to reach out to me via the contact page if you have any questions or would like to collaborate. For more information about my background consult the relevant CV or resumes linked below.</p>
-            <p><a href="CV_Diego Rodriguez.pdf">Academic CV</a> | <a href="Resume_Diego Rodriguez_Sc.pdf">Science Resume</a> | <a href="Resume_Diego Rodriguez_A.pdf">Art Resume</a></p>
+            <h1>About the Project</h1>
+            <p>Our work attempts to address a central question in the study of the effects of ketamine: are the effects of ketamine due to changes in inhibitory neurons. Additionally, we set the groundwork to ask the following question: how are the electrophysiological and molecular effects related, that is, what is the relationship between the effects of ketamine across different levels of biology?</p>
+            <p>During my time at the labs of Dr. André Fenton and Dr. Eric Klann at the NYU Center for Neural Science, I used in vivo metabolic labeling (FUNCAT) to fluorescently tag nascent proteins after ketamine treatment in mice. Used confocal microscope to image hippocampus samples and standard image processing (ImageJ) and statistical methods (Prism) for data analysis.</p>
+            <p>I performed both single unit and population level analysis on data from neuropixel recordings in the mouse hippocampus during ketamine treatment, wrote custom notebooks (Python) and managed high performance computing environments for analysis of large datasets (neural recordings and proteomics).</p>
+            <p>Link to <a href="Masters_Thesis_Diego_Rodriguez.pdf">full thesis</a> </p>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>

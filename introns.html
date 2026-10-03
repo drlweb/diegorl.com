@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about_DRL</title>
+    <title>project_introns</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,15 +24,35 @@
         .photo-box {
             flex: 1 1 420px;
             min-height: 520px;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #1a263f 0%, #0f1740 45%, #2c3e78 100%);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
         .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-column {
+            flex: 1 1 420px;
+            min-width: 0;
+        }
+        .photo-caption {
+            margin-top: 12px;
+            color: #b9a63d;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .photo-caption p {
+            margin: 0 0 8px;
+        }
+        .photo-caption p:last-child {
+            margin-bottom: 0;
+        }
+        .photo-box textPath {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -94,13 +114,18 @@
 </head>
 <body>
     <div class="about-wrapper">
-        <div class="photo-box">
-            <img src="biopic.jpg" alt="Diego Rodríguez Langevin">
+        <div class="photo-column">
+            <div class="photo-box">
+                <img src="introns.png" alt="Introns">
+            </div>
+            <div class="photo-caption">
+                <p>Graphical abstract of working hypothesis for the project. Intron 3 has PTB binding sites that could coordinate PTB binding in exon 8/8A and therefore influence the overall splicing pattern of CACNA1C.</p>
+            </div>
         </div>
         <div class="about-text">
-            <h1>About Me</h1>
-            <p>Hi, I’m Diego Rodríguez Langevin, an interdisciplinary researcher with a love for designing, managing and communicating complex projects in both art and science. My academic focus is two-pronged. On the one hand I specialize in molecular neuroscience, and have experience in both experimental and computational work. On the other hand I study philosophy with an emphasis on 20th century thinkers and decolonial theory. Creatively I dabble in poetry and graphic design, where I have developed a style based on free association and the juxtaposition of images. My goal is to combine my eclectic set of skills to help develop and realize interdisciplinary projects across academic, civic and creative communities alike. Please feel free to reach out to me via the contact page if you have any questions or would like to collaborate. For more information about my background consult the relevant CV or resumes linked below.</p>
-            <p><a href="CV_Diego Rodriguez.pdf">Academic CV</a> | <a href="Resume_Diego Rodriguez_Sc.pdf">Science Resume</a> | <a href="Resume_Diego Rodriguez_A.pdf">Art Resume</a></p>
+            <h1>About the Project</h1>
+            <p>This project investigates how schizophrenia associated variations in noncoding regions of the CACNA1C gene, as determined through Genome Wide Association Studies (GWAS), influence splicing patterns of this important gene encoding the pore subunit of the L-type calcium channel.</p>
+            <p>During my rotation in the lab of Dr. Richard Tsien at the NYU Langone Health Neuroscience Institute, I cross-referenced non-coding regions associated with schizophrenia with known regulatory domains in online databases (UCSC genome browser, RBPmap, Ensembl) and ran real-time PCR on cDNA samples from human iPSC-derived neurons that had these regions deleted using CRISPR technology.</p>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
