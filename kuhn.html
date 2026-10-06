@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project_kuhn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #01011f;
+            color: #e8be15;
+        }
+        .about-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .photo-box {
+            flex: 1 1 420px;
+            min-height: 520px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-column {
+            flex: 1 1 420px;
+            min-width: 0;
+        }
+        .photo-caption {
+            margin-top: 12px;
+            color: #b9a63d;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .photo-caption p {
+            margin: 0 0 8px;
+        }
+        .photo-caption p:last-child {
+            margin-bottom: 0;
+        }
+        .photo-box textPath {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .about-text {
+            flex: 1 1 460px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .about-text h1 {
+            margin: 0 0 24px;
+            font-size: 52px;
+            color: #e8be15;
+            text-align: left;
+        }
+        .about-text p {
+            margin: 0 0 32px;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #b9a63d;
+            text-align: justify;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .nav-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: #b59410;
+            font-size: 20px;
+            padding: 12px 18px;
+            border: 1px solid rgba(181, 148, 16, 0.35);
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .nav-links a:hover {
+            background-color: rgba(233, 206, 59, 0.12);
+            color:  #c5ccd7;
+        }
+        @media (max-width: 900px) {
+            .about-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-text h1,
+            .about-text p {
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-wrapper">
+        <div class="photo-column">
+            <div class="photo-box">
+                <img src="k2.png" alt="Kuhn">
+            </div>
+        </div>
+        <div class="about-text">
+            <h1>About the Project</h1>
+            <p>"Artificial intelligence (AI) is thought to be currently revolutionizing both science and society at large. In this essay my primary objective is to investigate how an AI revolution fits into the Kuhnian framework and understand exactly how it is changing science. If AI is in fact revolutionary, then how is it interacting with the exemplars of the fields it is being used in? Deep learning, one of the most popular mathematical models to which AI refers, is at first instance a new kind of instrument being implemented across scientific fields. It is not a theoretical development that addresses a field-specific problem in a novel way, but rather a multi-purpose tool that can assist in the process of scientific discovery in any field. Philosophers of science have been generally skeptical of the use of AI in the scientific enterprise due to its questionable epistemic status. Machine learning algorithms, specifically those powerful enough to work as reliable object classifiers like deep learning, lack (for the most part) an interpretable internal logic. In other words, they are tools which give us accurate results without us being able to fully reverse engineer and understand how these results were reached. Because of the questionable epistemic access into AI’s internal logic philosophers of science believe AI violates the important scientific value of transparency in the production of knowledge, and remain skeptical to the truly  scientifically revolutionary status of AI."</p> 
+            <p>Link to <a href="Kuhn_Essay.pdf">full essay</a> </p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

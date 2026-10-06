@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project_diap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #01011f;
+            color: #e8be15;
+        }
+        .about-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .photo-box {
+            flex: 1 1 420px;
+            min-height: 520px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-column {
+            flex: 1 1 420px;
+            min-width: 0;
+        }
+        .photo-caption {
+            margin-top: 12px;
+            color: #b9a63d;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .photo-caption p {
+            margin: 0 0 8px;
+            text-align: justify;
+        }
+        .photo-caption p:last-child {
+            margin-bottom: 0;
+        }
+        .photo-box textPath {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .about-text {
+            flex: 1 1 460px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .about-text h1 {
+            margin: 0 0 24px;
+            font-size: 52px;
+            color: #e8be15;
+            text-align: left;
+        }
+        .about-text p {
+            margin: 0 0 32px;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #b9a63d;
+            text-align: justify;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .nav-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: #b59410;
+            font-size: 20px;
+            padding: 12px 18px;
+            border: 1px solid rgba(181, 148, 16, 0.35);
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .nav-links a:hover {
+            background-color: rgba(233, 206, 59, 0.12);
+            color:  #c5ccd7;
+        }
+        @media (max-width: 900px) {
+            .about-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-text h1,
+            .about-text p {
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-wrapper">
+        <div class="photo-column">
+            <div class="photo-box">
+                <img src="diap.png" alt="Diap">
+            </div>
+            <div class="photo-caption">
+                <p>The report on "The Argument for a Concentration-Based DIAP Requirement" was written by members of Decolonization at Brown: Arenal Haut, Amiya Mandapati, Skyler Chong, Naomi Desalegne, Jewel Medel, and Sarah Ogundare. I served as a contributing member to the project by providing research and analysis to support the arguments presented in the report through <a href="kanha.html">previous work</a> and access to current developments in the College Curriculum Council at Brown University.</p>
+            </div>
+        </div>
+        <div class="about-text">
+            <h1>About the Project</h1>
+            <p>"In 2016, a temporary committee of Brown students, faculty, and administration, was tasked with creating a list of recommendations for the Diversity and Inclusion Action Plan (DIAP) as it pertains to curriculum. One outcome of this process was a new course label, DIAP, which replaced the Diverse Perspectives in Liberal Learning (DPLL) stamp that had previously been used to describe courses that tackled issues of structural inequity and bias. DIAP courses continue to be used throughout the university."</p>
+            <p>"Within this broader context, we view a DIAP requirement as necessary. As members of Decolonization at Brown, we recognize that a DIAP requirement by itself is not decolonization-- the material movement of wealth and power into Black and Indigenous communities-- yet the roles of colonialism, race, power, and privilege in our curriculum remain largely unaddressed. A requirement would be a more moderate step towards engaging with the ongoing effects of systems of oppression, including colonialism and racism, within concentrations at Brown. However, this systematic view of academia differs from pure diversity and inclusion work in that it actively requires us to acknowledge the current systems in place."</p>
+            <p>Link to <a href="diap.pdf">full report</a> </p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
